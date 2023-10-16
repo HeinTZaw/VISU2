@@ -114,3 +114,25 @@ body {
     color: #c7a16b;
     font-weight: 500;
 }
+europe {
+    font-size: 17px;
+    color: #ce796b;
+    font-weight: 500;
+}
+.emphasise {
+    font-size: 18px;
+    color: #fcac98;
+    font-weight: 500;
+}
+.Year
+{
+  
+    
+    color: #000;
+    font-weight: bold;
+}
+.UnitedNations
+{
+    color:#30D5C8;
+    font-weight: bold;
+}
