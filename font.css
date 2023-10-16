@@ -109,3 +109,8 @@ body {
   text-align: justify;
   column-gap: 20px;
 }
+.southeastasia {
+    font-size: 17px;
+    color: #c7a16b;
+    font-weight: 500;
+}
