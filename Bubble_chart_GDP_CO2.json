@@ -1,0 +1,125 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 600,
+    "height": 400,
+    "title": "A link between CO2 emission and GDP of a country",
+    "data": {
+      "url": "https://raw.githubusercontent.com/HeinTZaw/Homework-Week-10/main/global-data-on-sustainable-energy.csv"
+    },
+    "params": [
+      {
+        "name": "YearSelection",
+        "bind": {
+          "input": "select",
+          "options": ["2000", "2005", "2010", "2015", "2019"],
+          "labels": ["2000", "2005", "2010", "2015", "2019"],
+          "name": "YearSelection"
+        }
+      }
+    ],
+    "transform": [
+      {"filter": "datum.Value_co2_emissions_kt_by_country > 0"},
+      {"filter": "datum.gdp_per_capita > 0"},
+      {
+        "filter": "YearSelection == null || datum.Year == YearSelection"
+      },
+      {
+        "filter": {
+          "field": "Continent",
+          "oneOf": ["Asia", "Europe", "America", "Oceania", "Africa", "Caribbean"]
+        }
+      },
+      {
+        "aggregate": [
+          {
+            "op": "sum",
+            "field": "Value_co2_emissions_kt_by_country",
+            "as": "CO2"
+          },
+          {
+            "op": "sum",
+            "field": "gdp_per_capita",
+            "as": "GDP"
+          },
+          {
+            "op": "mean",
+            "field": "Primary energy consumption per capita (kWh/person)",
+            "as": "Primary Energy Consumption per capita"
+          }
+        ],
+        "groupby": ["Entity", "Continent", "datum.Year"]
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "CO2",
+        "type": "quantitative",
+        "title": "CO2 emission",
+        "axis": { "tickCount": 7 },
+        "scale": { "type": "log", "domain": [5, 1000000000] }
+      },
+      "y": {
+        "field": "GDP",
+        "type": "quantitative",
+        "title": "GDP per Capita"
+      }
+    },
+    "layer": [
+      {
+        "mark": "circle",
+        "encoding": {
+          "size": {
+            "field": "Primary Energy Consumption per capita",
+            "type": "quantitative",
+            "scale": {
+              "type": "threshold",
+              "domain": [500, 10000, 50000, 100000, 1000000],
+              "range": [30, 50, 150, 250, 500]
+            }
+          },
+          "color": {
+            "field": "Continent",
+            "type": "nominal"
+          },
+          "tooltip": [
+            { "field": "Entity", "type": "nominal" },
+            { "field": "CO2", "type": "quantitative", "format": "," },
+            { "field": "GDP", "type": "quantitative", "format": "," },
+            { "field": "Primary Energy Consumption per capita", "type": "quantitative", "format": "," }
+          ]
+        }
+        
+      },
+      
+      {
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "baseline": "middle",
+          "dx": -12,
+          "fontSize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": { "field": "Entity", "type": "nominal" },
+          "color": { "value": "black" },
+          "opacity": {
+            "condition": {
+              "test": "datum['Entity'] == 'China' || datum['Entity'] == 'Serbia' || datum['Entity'] == 'Norway' || datum['Entity'] == 'Solomon Islands' || datum['Entity'] == 'Maldives' || datum['Entity'] == 'Germany' || datum['Entity'] == 'United States'",
+              "value": 1
+            },
+            "value": 0
+          },
+           "tooltip": [
+            { "field": "Entity", "type": "nominal" },
+            { "field": "CO2", "type": "quantitative", "format": "," },
+            { "field": "GDP", "type": "quantitative", "format": "," },
+             { "field": "Primary Energy Consumption per capita", "type": "quantitative", "format": "," }
+          ]
+         
+          
+        }
+      }
+    ]
+  }
+  

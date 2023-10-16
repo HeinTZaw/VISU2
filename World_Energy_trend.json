@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 400,
+  "title": "Top 20 countries with the highest Power generation",
+  "data": {
+    "url": "https://raw.githubusercontent.com/HeinTZaw/Homework-Week-10/main/02%20modern-renewable-energy-consumption.csv"
+  },
+  "params": [
+    {
+      "name": "zoom",
+      "select": {
+        "type": "interval"
+        
+      },
+      "bind":"scales"
+    }
+  ],
+  "transform": [
+    {"calculate": "0", "as": "zero"},
+    {
+      "fold": ["Geo Biomass Other - TWh", "Solar Generation - TWh", "Wind Generation - TWh", "Hydro Generation - TWh"],
+      "as": ["category", "Total Energy"]
+    },
+    {
+      "filter": "datum.Entity === 'World'"
+    }
+  ],
+
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "title": "Year",
+      "scale":{"domain":["1965-01-01", "2020-01-01"] }
+    },
+    "y": {
+      "field": "Total Energy",
+      "type": "quantitative",
+      "title": "Total Energy Generation",
+        "scale":{"domain":[0,8000] }
+    },
+    "color": {
+      "field": "category",
+      "scale": {
+        "range": ["#5C4033", "#00008B", "#FDB813", "#5A5A5A"]
+    },
+      "legend": {
+        "title": "Energy Source" 
+      }
+
+    },
+    "tooltip": [
+      { "field": "Total Energy", "type": "quantitative", "format": "," },
+      { "field": "Year", "type": "temporal" }
+    ]
+  
+  }
+  
+}
+
+
+
+
+
+

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <link rel="stylesheet" href="font.css" />
+    <style>
+      #font-header {
+        width: 100%; /* Adjust the width as needed */
+        height: auto; /* Allow the height to adjust based on content */
+      }
+    </style>
+    <script src="vis2.js"></script>
+
+    <title>Sustainable Global Energy</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="font-header"><p>Sustainable Global Energy</p></h1>
+
+      <!-- first section -->
+      <div class="textBox">
+        <p class="text-container">
+          Our everyday life depends on reliable and affordable energy. Yet
+          energy is the contributing factor to climate change, accounting for 60
+          percent of total global greenhouse gas emissions.
+        </p>
+        <p class="text-container">
+          The United Nations has established a goal of Ensuring universal access
+          to affordable electricity by 2030, emphasising that to reach the goal
+          requires investing in sustainable global energy.
+        </p>
+        <p class="text-container">
+          The following data visualisation explores possible contributing
+          factors of global energy and establishes a possible conclusion based
+          on the factors and recommends a reasonable solution to allowing
+          universal access to clean and affordable energy.
+        </p>
+      </div>
+
+      <!-- second section -->
+      <div class="factors">
+        <h2 class="font-subheading">Contributing Factors of CO2 Emission</h2>
+        <div id="bubble_chart"></div>
+      </div>
+
+      <div class="content">
+        <p class="parallel-paragraphs">
+          The following bubble plot explores if there is a link between GDP per
+          capita and CO2 emission of a country. Each bubble represents a country
+          and 6 different continents represent a variety of spreadness on the
+          chart. Furthermore, a size channel is used to present relationships
+          between the energy consumption per capita and CO2 emission.
+        </p>
+        <p class="parallel-paragraphs">
+          It is apparent that China is the highest carbon dioxide producer
+          despite low GDP per capita. There is not a huge relationship between
+          GDP per capita and CO2 emissions as huge CO2 emitted countries still
+          have low GDP per capita. By continent, European countries are
+          wealthiest based on the scattered dataplot when compared and emitted
+          more CO2 than other continents.
+        </p>
+        <p class="parallel-paragraphs">
+          This is not a huge surprise as developed countries have skyscrapers
+          and many other utilised facilities and Europe has most of them . In
+          energy consumption, it is a surprise that Europe and Asian countries
+          tend to have huge consumption while African countries are low energy
+          users. Click on the Year selection and choose from 2000 to 2019 to
+          further explore the relationship.
+        </p>
+      </div>
+
+      <!-- third section -->
+      <div class="globe">
+        <div id="world_map" style="flex: 1"></div>
+      </div>
+
+      <p class="new">
+        The cholorpleth map show the percentage of countries getting access to
+        electricity . An interactive slider is provided to express how the
+        continuous data is expressed for each country. This data set is more
+        important for the developing countries because getting access to
+        electricity also means those countries will use other alternatives such
+        as fuel and coal for cooking. This does not also produce pollution to
+        the society but also raise a lot of health issues , such as lung cancer
+        and staff. According to news ABC, 90 percent of people has died from
+        using coal, and this is evidented by some other data research.
+      </p>
+
+      <!-- fourth section -->
+
+      <div class="pieChart">
+        <div id="pie_chart"></div>
+      </div>
+
+      <div class="pieChartText">
+        <p class="pieChartTxt">
+          Globally, the production of renewable energy is increasing as well so
+          don’t worry too much about CO2 emission over the years. I am not
+          saying CO2 emission can be compensated but at least don’t think in a
+          bad way. The stacked area chart expresses global renewable energy
+          production from 1980 to 2020, which is increasing over the time. The
+          hydro generation takes up majority of the production and still
+          increasing. Wind energy has started to increase from 2005 and is
+          increasing over the year. Minor energy production goes to geo biomass
+          production. This is because biomass energy requires arable land to
+          develop.This means that land used for biofuel crops such as corn and
+          soybeans are unavailable to grow food or provide natural habitats.
+          Therefore, if forested areas are not sustainably cut, re-planted, and
+          given time to grow and sequester carbon, the advantages of using the
+          wood for fuel are not offset by the trees’ regrowth.
+        </p>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: center;" class="graphs">
+        <div id="small_multiples"></div>
+        <div id="work_chart"></div>
+      </div>
+
+      <div style="display: flex" id="fontHeader3">
+        <div style="flex: 1">
+          <p class="lastPara">
+            Also, another pie chart is provided with up to date news. China,
+            produced, 200 million joules currently followed by United states,
+            and India and Russia. The cholorpleth map show the percentage of
+            countries getting access to electricity . An interactive slider is
+            provided to express how the continuous data is expressed for each
+            country. This data set is more important for the developing
+            countries because getting access to electricity also means those
+            countries will use other alternatives such as fuel and coal for
+            cooking. This does not also produce pollution to the society but
+            also raise a lot of health issues , such as lung cancer and staff.
+            According to news ABC, 90 percent of people has died from using
+            coal, and this is evidented by some other data research. From this
+            article, it is concluded that GDP has no huge dominance over the CO2
+            emission of a country. From the world map, it is evident that all
+            the countries need access to electricity and the trend also explains
+            that the world is increasing production of renewable energy and the
+            proportion is taking over the place. If this current rate of energy
+            production is going, the estimated result is that the united nations
+            goal is reached and this is the final conclusion. %I need to
+            highlight the region
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

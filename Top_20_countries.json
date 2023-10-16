@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 300,
+    "height": 300,
+    "title": "Top 20 countries with the highest Power generation",
+    "data": {
+    "url": "https://raw.githubusercontent.com/HeinTZaw/Homework-Week-10/main/top20CountriesPowerGeneration.csv"
+    },
+    
+    "transform": [
+   
+    {
+      "fold": ["Hydro(TWh)", "Biofuel(TWh)", "Solar PV (TWh)","Geothermal (TWh)"],
+      "as": ["category", "Total"] 
+    }
+  ],
+ 
+
+
+
+
+
+
+    "mark": "bar",
+    "encoding": {
+    "x": {
+    "field": "Country",
+    "type": "nominal",
+    "title": "Countries"
+    
+    },
+    "y": {
+    "field": "Total",
+    "type": "quantitative",
+    "title":"Total Energy Generation"
+  
+    },
+    "color":{
+        "field":"category",
+        "type": "nominal",
+        "scale": {
+            "range": ["#5C4033", "#000000", "#00008B", "#FDB813"]
+        }
+    },
+    "tooltip": [
+{"field": "category", "type": "nominal"},
+{"field": "Total", "type": "quantitative", "format": ","},
+{"field": "Country","type":"nominal"}
+
+
+]
+
+    
+   
+    
+    
+    }}
+    

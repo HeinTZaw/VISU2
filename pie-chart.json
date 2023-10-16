@@ -1,0 +1,30 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 300,
+    "height": 300,
+    "data": {
+      "values": [
+        {"category": "China", "value": 159.39},
+        {"category": "United States", "value": 95.91},
+        {"category": "India", "value": 36.44},
+        {"category": "Russia", "value": 28.99}
+      ]
+    },
+    "layer": [
+      {
+        "mark": "arc",
+        "encoding": {
+          "theta": {"field": "value", "type": "quantitative"},
+          "color": {"field": "category", "type": "nominal",
+          "scale": {
+            "range": ["#E56020", "#00008B", "#FDB813", " #B31942"]
+        }},
+          "tooltip": [
+            { "field": "category", "type": "nominal" },
+            { "field": "value", "type": "quantitative", "format": ".2f" }
+          ]
+        }
+      }
+      
+    ]
+  }
